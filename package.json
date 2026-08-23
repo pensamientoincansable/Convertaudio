@@ -1,0 +1,19 @@
+{
+  "name": "convertaudio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CORTE — taller de conversión de audio en el dispositivo",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173"
+  },
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.2"
+  },
+  "devDependencies": {
+    "vite": "^6.4.3"
+  }
+}
