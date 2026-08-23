@@ -26,6 +26,34 @@
     <meta property="og:image" content="/atmosphere.jpg" />
   </head>
   <body>
+    <noscript>
+      <div style="position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: #080706; color: #f3eadc; font-family: ui-monospace, monospace; padding: 24px; text-align: center">
+        <p style="max-width: 52ch; font-size: 14px; line-height: 1.7">
+          Esta app necesita JavaScript para funcionar. Actívalo en el navegador y recarga la página.
+        </p>
+      </div>
+    </noscript>
+    <script>
+      // index.html no es una página estática: los estilos y la lógica viven en
+      // módulos ES que solo Vite puede servir. Si se abre el archivo directamente
+      // (file://), los módulos no cargan y la página quedaría en blanco.
+      if (location.protocol === 'file:') {
+        document.addEventListener('DOMContentLoaded', () => {
+          const aviso = document.createElement('div')
+          aviso.style.cssText =
+            'position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#080706;color:#f3eadc;font-family:ui-monospace,monospace;padding:24px;text-align:center'
+          aviso.innerHTML =
+            '<p style="max-width:56ch;font-size:14px;line-height:1.8;margin:0">' +
+            'Esta página se abre directamente desde el disco, pero los estilos y la conversión ' +
+            'viven en módulos que el navegador no puede cargar así.<br><br>' +
+            'Ejecuta <code style="color:#e3a56a">npm install</code> y ' +
+            '<code style="color:#e3a56a">npm run dev</code> en la carpeta del proyecto, ' +
+            'y abre la dirección que Vite muestre (por ejemplo http://localhost:5173).' +
+            '</p>'
+          document.body.appendChild(aviso)
+        })
+      }
+    </script>
     <div class="fx-atmosphere" aria-hidden="true"></div>
     <canvas class="fx-grain" id="grain" aria-hidden="true"></canvas>
     <div class="ghost-rate" id="ghost-rate" aria-hidden="true">192</div>
