@@ -459,7 +459,7 @@ async function setFile(file) {
 
 async function loadSample() {
   try {
-    const response = await fetch('/muestra.wav')
+    const response = await fetch(`${import.meta.env.BASE_URL}muestra.wav`)
     const blob = await response.blob()
     const file = new File([blob], 'muestra.wav', { type: 'audio/wav' })
     await setFile(file)
